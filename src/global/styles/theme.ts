@@ -1,3 +1,5 @@
+import 'styled-components';
+
 export default {
     colors: {
         header: '#1B1B1F',
