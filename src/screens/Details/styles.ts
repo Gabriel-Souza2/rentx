@@ -6,11 +6,7 @@ export const Container = styled.View`
     flex: 1;
 `;
 
-export const Header = styled.View`
-    position: absolute;
-    margin-top: ${getStatusBarHeight() + 18}px;
-    margin-left: 16px;
-`;
+export const Header = styled.View``;
 
 export const ImgSliderContainer = styled.View`
     margin-top: ${getStatusBarHeight() + 32}px;
@@ -72,7 +68,7 @@ export const Description = styled.Text`
     font-family: ${({ theme }) => theme.fonts.primary_400};
     font-size: ${RFValue(15)}px;
     color: ${({ theme }) => theme.colors.text};
-    margin-top:15px;
+    margin-top:20px;
     line-height: ${RFValue(25)}px;
     text-align: justify;
 `;

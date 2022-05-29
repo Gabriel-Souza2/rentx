@@ -1,6 +1,6 @@
 import React from 'react';
 import AppLoading from 'expo-app-loading';
-import { Details } from './src/screens/Details';
+import { Scheduling } from './src/screens/Scheduling';
 import { ThemeProvider } from 'styled-components';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
@@ -25,7 +25,7 @@ export default function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <ThemeProvider theme={theme}>
-          <Details></Details>
+          <Scheduling></Scheduling>
       </ThemeProvider>
     </GestureHandlerRootView>
   );
