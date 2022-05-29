@@ -9,7 +9,7 @@ export default {
 
         text: '#7A7A80',
         text_detail: '#AEAEB3',
-        title: '#47474D',
+        title: '#41414D',
 
         line: '#EBEBF0',
         
