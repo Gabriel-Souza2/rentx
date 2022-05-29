@@ -1,6 +1,7 @@
 import React from 'react';
+import { useTheme } from 'styled-components';
+
 import EnergySvg from '../../assets/energy.svg';
-import Audi from '../../assets/Audi.png';
 
 import {
     Container,
@@ -12,33 +13,54 @@ import {
     ImageCar,
     Rent,
     Type,
-    About
+    About,
 } from './styles';
 
-export function CardCar() {
+interface Props {
+    manufacturer: string;
+    model: string;
+    rent: {
+        period: string;
+        value: number;
+    }
+    thumbnail: string;
+}
+
+export interface CardCarProps {
+    data: Props;
+}
+
+export function CardCar({ data }: CardCarProps) {
+    const theme = useTheme();
+
     return (
         <Container>
             <InformantionCar>
                 <Manufacturer>
-                    AUDI
+                    { data.manufacturer }
                 </Manufacturer>
                 <Model>
-                    RS 5 Coupé
+                    { data.model }
                 </Model>
                 <About>
                     <Rent>
-                        <Period>AO DIA</Period>
+                        <Period>
+                            { data.rent.period }
+                        </Period>
                         <Value>
-                            R$ 120
+                            { data.rent.value}
                         </Value>
                     </Rent>
                     <Type>
-                        <EnergySvg />
+                        <EnergySvg  color={theme.colors.text_detail}/>
                     </Type>
                 </About>
                 
             </InformantionCar>
-            <ImageCar source={Audi}/>
+            <ImageCar 
+                source={{uri: data.thumbnail }}
+                resizeMode='contain'
+                />
         </Container>
     );
 }
