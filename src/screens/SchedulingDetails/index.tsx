@@ -3,6 +3,7 @@ import { StatusBar } from 'react-native';
 import { BackButton } from '../../components/BackButton';
 import { ImgSlider } from '../../components/ImgSlider';
 import { Acessory } from '../../components/Acessory';
+import { Feather } from '@expo/vector-icons';
 
 import Acceleration from '../../assets/acceleration.svg';
 import Exchange from '../../assets/exchange.svg';
@@ -25,13 +26,17 @@ import {
     Period,
     Value,
     Acessories,
-    DescriptionWrapper,
-    Description,
+    RentalPeriod,
+    CalendarIcon,
+    DateInfo,
+    DateTitle,
+    DateValue,
     Footer
 } from './styles';
 import { MainButton } from '../../components/MainButton';
+import { RFValue } from 'react-native-responsive-fontsize';
 
-export function Details() {
+export function SchedulingDetails() {
 
     const theme = useTheme();
 
@@ -78,14 +83,28 @@ export function Details() {
                     <Acessory text="Auto" Icon={Exchange}/>
                     <Acessory text="2 pessoas" Icon={People}/>
                 </Acessories>
-
-                <DescriptionWrapper>
-                    <Description>
-                        Este é automóvel desportivo. Surgiu do lendário touro de lide indultado na praça 
-                        Real Maestranza de Sevilla. 
-                        É um belíssimo carro para quem gosta de acelerar.
-                    </Description>
-                </DescriptionWrapper>
+                <RentalPeriod>
+                        <CalendarIcon>
+                            <Feather 
+                                name='calendar' 
+                                size={RFValue(20)}
+                                color={theme.colors.background_secondary}
+                            />
+                        </CalendarIcon>
+                        <DateInfo>
+                            <DateTitle>DE</DateTitle>
+                            <DateValue>18/06/2021</DateValue>
+                        </DateInfo>
+                        <Feather 
+                            name="chevron-right" 
+                            size={RFValue(24)}
+                            color={theme.colors.text_detail}
+                        />
+                        <DateInfo>
+                            <DateTitle>ATE</DateTitle>
+                            <DateValue>18/06/2021</DateValue>
+                        </DateInfo>
+                    </RentalPeriod>
             </Content>
             <Footer>
                 <MainButton 
@@ -93,7 +112,7 @@ export function Details() {
                     onPress={() => {}}
                     color={theme.colors.main}
                 />
-                </Footer>
+            </Footer>
         </Container>
     );
 }

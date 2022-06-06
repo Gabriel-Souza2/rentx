@@ -11,7 +11,7 @@ export const Container = styled.View`
 
 export const Header = styled.View`
     width: 100%;
-    height: ${RFValue(325)}px;
+    height: 325px;
 
     background-color: ${({ theme }) => theme.colors.header};
 `;
@@ -21,7 +21,7 @@ export const HeaderWrapper = styled.View`
     height: 100%;
 
     justify-content: flex-end;
-    padding: 25px;
+    padding-left: 25px;
 `;
 
 export const Title = styled.Text`
@@ -55,4 +55,17 @@ export const DateValue = styled.Text<DataValueProps>`
         border-bottom-color: ${({ theme }) => theme.colors.text};
         padding-bottom: 5px;
     `};
+`;
+
+export const Content = styled.ScrollView.attrs({
+    contentContainerStyled: {
+        paddingBottom: 24
+    },
+    showsVerticalScrollIndicator: false
+})``;
+
+export const Footer = styled.View`
+    width: 100%;
+    align-items: center;
+    padding-bottom: 24px;
 `;

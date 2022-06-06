@@ -2,6 +2,8 @@ import React from 'react';
 import { StatusBar } from 'react-native';
 import { BackButton } from '../../components/BackButton';
 import { Calander } from '../../components/Calander';
+import { MainButton } from '../../components/MainButton';
+
 
 
 import ArrowSvg from '../../assets/arrow.svg';
@@ -16,7 +18,9 @@ import {
     RentalPeriod,
     DateInfo,
     DateTitle,
-    DateValue
+    DateValue,
+    Content,
+    Footer
 
 } from './styles';
 
@@ -50,7 +54,16 @@ export function Scheduling() {
                     </RentalPeriod>
                 </HeaderWrapper>
             </Header>
-            <Calander />
+            <Content>
+                <Calander />
+            </Content>
+            <Footer>
+                <MainButton 
+                    text="Confirmar" 
+                    color={theme.colors.main} 
+                    onPress={() => {}} 
+                />
+            </Footer>
         </Container>
     );
 }

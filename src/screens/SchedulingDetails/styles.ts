@@ -23,6 +23,7 @@ export const Content = styled.ScrollView.attrs({
     showVerticalScrollIndicator: false
 })`
     margin-top: 5px;
+    padding: 0 13px;
 `;
 
 export const Type = styled.View``;
@@ -57,21 +58,42 @@ export const Acessories = styled.View`
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding: 0 13px;
 `;
 
-export const DescriptionWrapper = styled.View`
+export const RentalPeriod = styled.View`
     width: 100%;
-    padding: 0 24px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 16px;
+
+    padding-bottom: 16px;
+    border-bottom-width: 1px;
+    border-bottom-color: ${({ theme }) => theme.colors.line};
+    
 `;
 
-export const Description = styled.Text`
-    font-family: ${({ theme }) => theme.fonts.primary_400};
+export const CalendarIcon = styled.View`
+    width: 48px;
+    height: 48px;
+    background-color: ${({ theme }) => theme.colors.main};
+    align-items: center;
+    justify-content: center;
+`;
+export const DateInfo = styled.View``;
+
+export const DateTitle = styled.Text`
+    font-size: ${RFValue(10)}px;
+    color: ${({ theme }) => theme.colors.text_detail};
+    font-family: ${({ theme }) => theme.fonts.secondary_500};
+    text-transform: uppercase;
+`;
+
+export const DateValue = styled.Text`
     font-size: ${RFValue(15)}px;
-    color: ${({ theme }) => theme.colors.text};
-    margin-top:20px;
-    line-height: ${RFValue(25)}px;
-    text-align: justify;
+    color: ${({ theme }) => theme.colors.title};
+    font-family: ${({ theme }) => theme.fonts.primary_500};
 `;
 
 export const Footer = styled.View`
@@ -82,3 +104,5 @@ export const Footer = styled.View`
     align-items: center;
     padding: 0 24px;
 `;
+
+

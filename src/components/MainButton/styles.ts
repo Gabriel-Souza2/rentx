@@ -8,7 +8,7 @@ interface ButtonProps {
 
 export const Container = styled(RectButton)<ButtonProps>`
     width: ${RFValue(327)}px;
-    height: ${RFValue(56)}px;
+    height: 56px;
     background-color: ${({ color }) => color};
 
     justify-content: center;
