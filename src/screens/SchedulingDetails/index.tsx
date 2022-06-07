@@ -31,6 +31,11 @@ import {
     DateInfo,
     DateTitle,
     DateValue,
+    RentalPrice,
+    RentalPriceLabel,
+    RetanlPriceDetails,
+    RentalPriceQuota,
+    RentalPriceTotal,
     Footer
 } from './styles';
 import { MainButton } from '../../components/MainButton';
@@ -39,8 +44,6 @@ import { RFValue } from 'react-native-responsive-fontsize';
 export function SchedulingDetails() {
 
     const theme = useTheme();
-
-
 
     return (
         <Container>
@@ -84,33 +87,40 @@ export function SchedulingDetails() {
                     <Acessory text="2 pessoas" Icon={People}/>
                 </Acessories>
                 <RentalPeriod>
-                        <CalendarIcon>
-                            <Feather 
-                                name='calendar' 
-                                size={RFValue(20)}
-                                color={theme.colors.background_secondary}
-                            />
-                        </CalendarIcon>
-                        <DateInfo>
-                            <DateTitle>DE</DateTitle>
-                            <DateValue>18/06/2021</DateValue>
-                        </DateInfo>
+                    <CalendarIcon>
                         <Feather 
-                            name="chevron-right" 
-                            size={RFValue(24)}
-                            color={theme.colors.text_detail}
+                            name='calendar' 
+                            size={RFValue(20)}
+                            color={theme.colors.background_secondary}
                         />
-                        <DateInfo>
-                            <DateTitle>ATE</DateTitle>
-                            <DateValue>18/06/2021</DateValue>
-                        </DateInfo>
-                    </RentalPeriod>
+                    </CalendarIcon>
+                    <DateInfo>
+                        <DateTitle>DE</DateTitle>
+                        <DateValue>18/06/2021</DateValue>
+                    </DateInfo>
+                    <Feather 
+                        name="chevron-right" 
+                        size={RFValue(24)}
+                        color={theme.colors.text_detail}
+                    />
+                    <DateInfo>
+                        <DateTitle>ATE</DateTitle>
+                        <DateValue>18/06/2021</DateValue>
+                    </DateInfo>
+                </RentalPeriod>
+                <RentalPrice>
+                    <RentalPriceLabel>Total</RentalPriceLabel>
+                    <RetanlPriceDetails>
+                        <RentalPriceQuota>R$ 580 x3 diarias</RentalPriceQuota>
+                        <RentalPriceTotal>R$ 2900</RentalPriceTotal>
+                    </RetanlPriceDetails>
+                </RentalPrice>
             </Content>
             <Footer>
                 <MainButton 
-                    text="Escolher período do aluguel" 
+                    text="Alugar Agora" 
                     onPress={() => {}}
-                    color={theme.colors.main}
+                    color={theme.colors.success}
                 />
             </Footer>
         </Container>

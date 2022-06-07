@@ -20,7 +20,7 @@ export const Information = styled.View`
     margin-bottom: 16px;
 `;
 export const Content = styled.ScrollView.attrs({
-    showVerticalScrollIndicator: false
+    showsVerticalScrollIndicator: false
 })`
     margin-top: 5px;
     padding: 0 13px;
@@ -94,6 +94,32 @@ export const DateValue = styled.Text`
     font-size: ${RFValue(15)}px;
     color: ${({ theme }) => theme.colors.title};
     font-family: ${({ theme }) => theme.fonts.primary_500};
+`;
+
+export const RentalPrice = styled.View`
+    margin-bottom: 16px;
+`;
+export const RentalPriceLabel = styled.Text`
+    font-size: ${RFValue(10)}px;
+    color: ${({ theme }) => theme.colors.text_detail};
+    font-family: ${({ theme }) => theme.fonts.secondary_500};
+    text-transform: uppercase;
+    margin-bottom: 8px;
+`;
+export const RetanlPriceDetails = styled.View`
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+`;
+export const RentalPriceQuota = styled.Text`
+    font-size: ${RFValue(15)}px;
+    color: ${({ theme }) => theme.colors.title};
+    font-family: ${({ theme }) => theme.fonts.primary_500};
+`;
+export const RentalPriceTotal = styled.Text`
+    font-size: ${RFValue(24)}px;
+    color: ${({ theme }) => theme.colors.success};
+    font-family: ${({ theme }) => theme.fonts.secondary_500};
 `;
 
 export const Footer = styled.View`
