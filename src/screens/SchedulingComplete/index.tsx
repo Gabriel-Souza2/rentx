@@ -1,6 +1,7 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
 import { useWindowDimensions } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import LogoSvg from '../../assets/logo_background_gray.svg';
 import Done from '../../assets/done.svg';
@@ -15,6 +16,12 @@ import { ConfirmationButton } from '../../components/ConfirmationButton';
 
 export function SchedulingComplete() {
     const { width } = useWindowDimensions();
+
+    const navigator = useNavigation<any>()
+
+    function handleHome() {
+        navigator.navigate('Home');
+    }
 
     return (
         <Container>
@@ -35,7 +42,7 @@ export function SchedulingComplete() {
                     até a concessionária da RENTX {'\n'}
                     pegar o seu automóvel.
                 </Message>
-                <ConfirmationButton title="ok"  onPress={() => {}}/>
+                <ConfirmationButton title="ok"  onPress={handleHome}/>
             </Content>
         </Container>
     );

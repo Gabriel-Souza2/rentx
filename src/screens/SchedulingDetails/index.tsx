@@ -1,5 +1,7 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 import { BackButton } from '../../components/BackButton';
 import { ImgSlider } from '../../components/ImgSlider';
 import { Acessory } from '../../components/Acessory';
@@ -44,6 +46,12 @@ import { RFValue } from 'react-native-responsive-fontsize';
 export function SchedulingDetails() {
 
     const theme = useTheme();
+
+    const navigator = useNavigation<any>()
+
+    function handleSchedulingComplete() {
+        navigator.navigate('SchedulingComplete');
+    }
 
     return (
         <Container>
@@ -119,7 +127,7 @@ export function SchedulingDetails() {
             <Footer>
                 <MainButton 
                     text="Alugar Agora" 
-                    onPress={() => {}}
+                    onPress={handleSchedulingComplete}
                     color={theme.colors.success}
                 />
             </Footer>

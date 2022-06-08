@@ -1,4 +1,5 @@
 import React from 'react';
+import { RectButtonProps } from 'react-native-gesture-handler';
 import { useTheme } from 'styled-components';
 
 import EnergySvg from '../../assets/energy.svg';
@@ -26,15 +27,15 @@ interface Props {
     thumbnail: string;
 }
 
-export interface CardCarProps {
+export interface CardCarProps extends RectButtonProps{
     data: Props;
 }
 
-export function CardCar({ data }: CardCarProps) {
+export function CardCar({ data, onPress, ...rest}: CardCarProps) {
     const theme = useTheme();
 
     return (
-        <Container>
+        <Container onPress={onPress} {...rest}>
             <InformantionCar>
                 <Manufacturer>
                     { data.manufacturer }

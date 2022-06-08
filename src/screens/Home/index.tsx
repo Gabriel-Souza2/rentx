@@ -1,7 +1,9 @@
 import React from 'react';
-import { FlatList, StatusBar } from 'react-native';
+import { StatusBar } from 'react-native';
 
-import { CardCar, CardCarProps } from '../../components/CardCar';
+
+
+import { CardCar } from '../../components/CardCar';
 
 import Logo from '../../assets/logo.svg';
 
@@ -12,6 +14,8 @@ import {
     TotalCars,
     Content
 } from './styles';
+
+import { useNavigation } from '@react-navigation/native';
 
 export function Home() {
     const data = [
@@ -28,6 +32,13 @@ export function Home() {
         },
         
     ]
+
+    const navigation = useNavigation<any>()
+
+    function handleCarDetails() {
+        navigation.navigate('Details');
+    }
+
     return (
         <Container>
             <StatusBar 
@@ -44,7 +55,9 @@ export function Home() {
             <Content 
                 data={data}
                 keyExtractor={item => item.data.manufacturer}
-                renderItem={ ({ item }) => <CardCar data={item.data} /> }                
+                renderItem={ ({ item }) => 
+                    <CardCar data={item.data} onPress={handleCarDetails} /> 
+                }                
             />
         </Container>
     );

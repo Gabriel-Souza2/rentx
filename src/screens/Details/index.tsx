@@ -1,5 +1,7 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 import { BackButton } from '../../components/BackButton';
 import { ImgSlider } from '../../components/ImgSlider';
 import { Acessory } from '../../components/Acessory';
@@ -35,7 +37,11 @@ export function Details() {
 
     const theme = useTheme();
 
+    const navigator = useNavigation<any>()
 
+    function handleScheduling() {
+        navigator.navigate('Scheduling');
+    }
 
     return (
         <Container>
@@ -90,7 +96,7 @@ export function Details() {
             <Footer>
                 <MainButton 
                     text="Escolher período do aluguel" 
-                    onPress={() => {}}
+                    onPress={handleScheduling}
                     color={theme.colors.main}
                 />
                 </Footer>
