@@ -1,19 +1,17 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
+
 
 import { BackButton } from '../../components/BackButton';
 import { ImgSlider } from '../../components/ImgSlider';
-import { Acessory } from '../../components/Acessory';
-
-import Acceleration from '../../assets/acceleration.svg';
-import Exchange from '../../assets/exchange.svg';
-import Force from '../../assets/force.svg';
-import Gasoline from '../../assets/gasoline.svg';
-import People from '../../assets/people.svg';
-import Speed from '../../assets/speed.svg';
+import { Accessory } from '../../components/Acessory';
+import { MainButton } from '../../components/MainButton';
+import { DetailsRouteParams } from '../../routes/navigation';
+import { getAccessoryIcon } from '../../utils/getAccessoryIcon';
 
 import { useTheme } from 'styled-components';
+
 import {
     Container,
     Header,
@@ -26,23 +24,30 @@ import {
     Price,
     Period,
     Value,
-    Acessories,
+    Accessories,
     DescriptionWrapper,
     Description,
     Footer
 } from './styles';
-import { MainButton } from '../../components/MainButton';
+
+
 
 export function Details() {
 
     const theme = useTheme();
 
-    const navigator = useNavigation<any>()
+    const navigator = useNavigation();
+
+    const { params: {car} } = useRoute<DetailsRouteParams>();
+
+    function handleHome() {
+        navigator.goBack();
+    }
 
     function handleScheduling() {
         navigator.navigate('Scheduling');
     }
-
+    
     return (
         <Container>
             <StatusBar 
@@ -51,45 +56,47 @@ export function Details() {
                 translucent
             />
             <Header>
-                <BackButton onPress={() => {}} />
+                <BackButton onPress={handleHome} />
             </Header>
             <ImgSliderContainer>
-                <ImgSlider urls={['https://firebasestorage.googleapis.com/v0/b/rentx-c622e.appspot.com/o/Lambo.png?alt=media&token=0dc12ca9-3976-45f9-9ea6-898fb2a3114b']} />
+                <ImgSlider urls={car.photos} />
             </ImgSliderContainer>
             <Content>
                 <Information>
                     <Type>
                         <Manufacturer>
-                            Lamborghini
+                            { car.brand }
                         </Manufacturer>
                         <Model>
-                            Huracan
+                            { car.name }
                         </Model>
                     </Type>
                     <Price>
                         <Period>
-                            Ao dia
+                            { car.rent.period }
                         </Period>
                         <Value>
-                            R$ 580
+                            R$ { car.rent.price }
                         </Value>
                     </Price>
                 </Information>
 
-                <Acessories>
-                    <Acessory text="380 Km/h" Icon={Speed}/>
-                    <Acessory text="3.2s" Icon={Acceleration}/>
-                    <Acessory text="800 HP" Icon={Force}/>
-                    <Acessory text="Gasolina" Icon={Gasoline}/>
-                    <Acessory text="Auto" Icon={Exchange}/>
-                    <Acessory text="2 pessoas" Icon={People}/>
-                </Acessories>
+                <Accessories>
+                    {
+                        car.accessories.map(accessory => (
+                            <Accessory
+                                key={accessory.type}
+                                text={accessory.name} 
+                                Icon={getAccessoryIcon(accessory.type)}
+                            />
+                        ))
+                    }
+                    
+                </Accessories>
 
                 <DescriptionWrapper>
                     <Description>
-                        Este é automóvel desportivo. Surgiu do lendário touro de lide indultado na praça 
-                        Real Maestranza de Sevilla. 
-                        É um belíssimo carro para quem gosta de acelerar.
+                        { car.about }
                     </Description>
                 </DescriptionWrapper>
             </Content>

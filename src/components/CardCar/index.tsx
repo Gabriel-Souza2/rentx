@@ -2,6 +2,8 @@ import React from 'react';
 import { RectButtonProps } from 'react-native-gesture-handler';
 import { useTheme } from 'styled-components';
 
+import { CarDto } from '../../dtos/CarDto';
+
 import EnergySvg from '../../assets/energy.svg';
 
 import {
@@ -17,18 +19,9 @@ import {
     About,
 } from './styles';
 
-interface Props {
-    manufacturer: string;
-    model: string;
-    rent: {
-        period: string;
-        value: number;
-    }
-    thumbnail: string;
-}
 
 export interface CardCarProps extends RectButtonProps{
-    data: Props;
+    data: CarDto;
 }
 
 export function CardCar({ data, onPress, ...rest}: CardCarProps) {
@@ -38,10 +31,10 @@ export function CardCar({ data, onPress, ...rest}: CardCarProps) {
         <Container onPress={onPress} {...rest}>
             <InformantionCar>
                 <Manufacturer>
-                    { data.manufacturer }
+                    { data.brand}
                 </Manufacturer>
                 <Model>
-                    { data.model }
+                    { data.name }
                 </Model>
                 <About>
                     <Rent>
@@ -49,7 +42,7 @@ export function CardCar({ data, onPress, ...rest}: CardCarProps) {
                             { data.rent.period }
                         </Period>
                         <Value>
-                            { data.rent.value}
+                            R$ { data.rent.price}
                         </Value>
                     </Rent>
                     <Type>

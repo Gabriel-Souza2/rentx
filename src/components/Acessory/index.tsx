@@ -10,7 +10,7 @@ interface AcessoryProps {
     text: string;
     Icon: React.FC<SvgProps>
 }
-export function Acessory({ text, Icon }: AcessoryProps) {
+export function Accessory({ text, Icon }: AcessoryProps) {
     return (
         <Container>
             <Icon />

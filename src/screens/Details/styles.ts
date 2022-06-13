@@ -51,7 +51,7 @@ export const Value = styled.Text`
     color: ${({ theme }) => theme.colors.main};
 `;
 
-export const Acessories = styled.View`
+export const Accessories = styled.View`
     width: 100%;
     flex-direction: row;
     flex-wrap: wrap;

@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
+import { addDays } from 'date-fns';
+
 import { BackButton } from '../../components/BackButton';
-import { Calander } from '../../components/Calander';
+import { Calander, DateData, MarkedDateProps } from '../../components/Calander';
 import { MainButton } from '../../components/MainButton';
-
-
 
 import ArrowSvg from '../../assets/arrow.svg';
 
@@ -25,8 +25,18 @@ import {
     Footer
 
 } from './styles';
+import { generateInterval } from '../../components/Calander/generateInterval';
+import { format } from 'date-fns';
+
+interface RetalPeriod {
+    startFormatted: string;
+    endFormatted: string;
+}
 
 export function Scheduling() {
+    const [lastSelectDate, setLastSelectDate] = useState<DateData>({} as DateData);
+    const [markedDates, setMarkedDate] = useState<MarkedDateProps>({} as MarkedDateProps);
+    const [rentalPeriod, setRentalPeriod] = useState<RetalPeriod>({} as RetalPeriod);
 
     const theme = useTheme();
 
@@ -34,6 +44,30 @@ export function Scheduling() {
 
     function handleSchedulingDetails() {
         navigator.navigate('SchedulingDetails');
+    }
+
+    function handleBackButton() {
+        navigator.goBack();
+    }
+
+    function handleChangeDate(date: DateData) {
+        let start = !lastSelectDate.timestamp ? date : lastSelectDate;
+        let end = date;
+
+        if(start.timestamp > end.timestamp) {
+            start = end;
+            end = start;
+        }
+
+        setLastSelectDate(end);
+
+        const interval = generateInterval(start, end);
+        setMarkedDate(interval);
+
+        setRentalPeriod({
+            startFormatted: format(addDays(new Date(start.timestamp), 1), 'dd/MM/yyyy'),
+            endFormatted: format(addDays(new Date(end.timestamp), 1), 'dd/MM/yyyy')
+        })
     }
 
     return (
@@ -44,7 +78,10 @@ export function Scheduling() {
                 backgroundColor="transparent"
             />
             <Header>
-                <BackButton color={theme.colors.background_secondary} />
+                <BackButton 
+                    color={theme.colors.background_secondary} 
+                    onPress={handleBackButton} 
+                />
                 <HeaderWrapper>
                     <Title>
                         Escolha uma {'\n'}data de início e {'\n'}fim do aluguel
@@ -52,18 +89,25 @@ export function Scheduling() {
                     <RentalPeriod>
                         <DateInfo>
                             <DateTitle>DE</DateTitle>
-                            <DateValue selected={true}>18/06/2021</DateValue>
+                            <DateValue selected={!!rentalPeriod.startFormatted}>
+                                {rentalPeriod.startFormatted}
+                            </DateValue>
                         </DateInfo>
                         <ArrowSvg />
                         <DateInfo>
                             <DateTitle>ATE</DateTitle>
-                            <DateValue selected={true}>18/06/2021</DateValue>
+                            <DateValue selected={!!rentalPeriod.endFormatted}>
+                                {rentalPeriod.endFormatted}
+                            </DateValue>
                         </DateInfo>
                     </RentalPeriod>
                 </HeaderWrapper>
             </Header>
             <Content>
-                <Calander />
+                <Calander 
+                    markedDate={markedDates}
+                    onDayPress={handleChangeDate}
+                />
             </Content>
             <Footer>
                 <MainButton 
