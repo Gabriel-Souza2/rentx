@@ -1,5 +1,7 @@
 import React from 'react';
+import { ActivityIndicator } from 'react-native';
 import { RectButtonProps } from 'react-native-gesture-handler';
+import { useTheme } from 'styled-components';
 
 import {
     Container,
@@ -10,14 +12,27 @@ interface MainButtonProps extends RectButtonProps {
     text: string;
     onPress: () => void;
     color: string;
+    activeIndicator?: boolean;
 }
 
-export function MainButton({ text, color, onPress, ...rest }: MainButtonProps) {
+export function MainButton({ 
+    text, 
+    color, 
+    onPress, 
+    activeIndicator = false, 
+    ...rest 
+}: MainButtonProps) {
+    const theme = useTheme();
     return (
         <Container onPress={onPress} color={color} {...rest}>
-            <Title>
-                { text }
-            </Title>
+            {
+                activeIndicator ? 
+                    <ActivityIndicator color={theme.colors.background_secondary}/> 
+                        :
+                    <Title>
+                        { text }
+                    </Title>
+            }
         </Container>
     );
 }

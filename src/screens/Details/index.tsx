@@ -5,7 +5,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 
 import { BackButton } from '../../components/BackButton';
 import { ImgSlider } from '../../components/ImgSlider';
-import { Accessory } from '../../components/Acessory';
+import { Accessory } from '../../components/Accessory';
 import { MainButton } from '../../components/MainButton';
 import { DetailsRouteParams } from '../../routes/navigation';
 import { getAccessoryIcon } from '../../utils/getAccessoryIcon';
@@ -45,7 +45,7 @@ export function Details() {
     }
 
     function handleScheduling() {
-        navigator.navigate('Scheduling');
+        navigator.navigate('Scheduling', { car });
     }
     
     return (

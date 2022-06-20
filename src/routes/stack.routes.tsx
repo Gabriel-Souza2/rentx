@@ -16,8 +16,18 @@ export type ScreenParamList = {
     Details: { 
         car: CarDto
     };
-    Scheduling: undefined,
-    SchedulingDetails: undefined,
+    Scheduling: {
+        car: CarDto
+    },
+    SchedulingDetails: {
+        car: CarDto,
+        period: {
+            start: string,
+            end: string,
+            interval: string[]
+        },
+
+    },
     SchedulingComplete: undefined
 
 }

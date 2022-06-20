@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { StatusBar } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { Alert, StatusBar } from 'react-native';
+
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { SchedulingRouteParams } from '../../routes/navigation';
+
 
 import { addDays } from 'date-fns';
 
@@ -40,10 +43,23 @@ export function Scheduling() {
 
     const theme = useTheme();
 
-    const navigator = useNavigation<any>()
+    const navigator = useNavigation();
+
+    const { params: { car }} = useRoute<SchedulingRouteParams>();
 
     function handleSchedulingDetails() {
-        navigator.navigate('SchedulingDetails');
+        const period = {
+            start: rentalPeriod.startFormatted,
+            end: rentalPeriod.endFormatted,
+            interval: Object.keys(markedDates)
+        }
+
+        if(rentalPeriod.startFormatted || rentalPeriod.endFormatted) {
+            navigator.navigate('SchedulingDetails', { car, period });
+        }
+        else {
+            Alert.alert("Nenhuma data foi selecionada", 'Por favor, selecione uma data para poder continuar!');
+        }
     }
 
     function handleBackButton() {
