@@ -1,12 +1,13 @@
 import React from 'react';
 
-import { createNativeStackNavigator, NativeStackScreenProps } from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { Home } from '../screens/Home';
 import { Details } from '../screens/Details';
 import { Scheduling } from '../screens/Scheduling';
 import { SchedulingDetails } from '../screens/SchedulingDetails';
 import { SchedulingComplete } from '../screens/SchedulingComplete';
+import { MyCars } from '../screens/MyCars';
 
 import { CarDto } from '../dtos/CarDto';
 
@@ -28,7 +29,8 @@ export type ScreenParamList = {
         },
 
     },
-    SchedulingComplete: undefined
+    SchedulingComplete: undefined,
+    MyCars: undefined
 
 }
 
@@ -59,6 +61,10 @@ export function StackRoutes() {
             <Screen 
                 name="SchedulingComplete"
                 component={SchedulingComplete}
+            />
+            <Screen 
+                name="MyCars"
+                component={MyCars}
             />
         </Navigator>
     );

@@ -16,11 +16,16 @@ import {
 } from './styles';
 
 import { useNavigation } from '@react-navigation/native';
+import { MyCarsButton } from '../../components/MyCarsButton';
 
 export function Home() {
     const [Cars, setCars] = useState<CarDto[]>();
 
     const navigation = useNavigation();
+
+    function handleMyCars() {
+        navigation.navigate('MyCars')
+    }
 
     useEffect(() => {
         async function fetchCars() {
@@ -60,6 +65,7 @@ export function Home() {
                     <CardCar data={item} onPress={() => handleCarDetails(item)} /> 
                 }                
             />
+            <MyCarsButton onPress={handleMyCars}/>
         </Container>
     );
 }
