@@ -58,14 +58,16 @@ export const DateValue = styled.Text<DataValueProps>`
 `;
 
 export const Content = styled.ScrollView.attrs({
-    contentContainerStyled: {
-        paddingBottom: 24
-    },
     showsVerticalScrollIndicator: false
-})``;
+})`
+    flex: 1;
+    background-color: ${({ theme }) => theme.colors.background_secondary};
+`;
 
 export const Footer = styled.View`
     width: 100%;
     align-items: center;
     padding-bottom: 24px;
+
+    background-color: ${({ theme }) => theme.colors.background_secondary};
 `;

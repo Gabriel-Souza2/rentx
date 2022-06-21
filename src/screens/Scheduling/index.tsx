@@ -129,7 +129,8 @@ export function Scheduling() {
                 <MainButton 
                     text="Confirmar" 
                     color={theme.colors.main} 
-                    onPress={handleSchedulingDetails} 
+                    onPress={handleSchedulingDetails}
+                    enabled={!!rentalPeriod.startFormatted}
                 />
             </Footer>
         </Container>
