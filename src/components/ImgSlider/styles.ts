@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { Dimensions } from 'react-native';
 
 
 interface ImgIndexProps {
@@ -30,6 +31,7 @@ export const ImgIndex = styled.View<ImgIndexProps>`
 `;
 
 export const ImageCarWapper = styled.View`
+    width: ${Dimensions.get('window').width}px;
     height: 132px;
     justify-content: center;
     align-items: center;
