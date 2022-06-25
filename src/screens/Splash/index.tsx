@@ -49,11 +49,11 @@ export function Splash() {
 
     useEffect(() => {
         breandValue.value = withSequence(
-            withTiming(50, {duration: 3500}),
-            withTiming(0, {duration: 3500}, () => {
+            withTiming(50, {duration: 2000}),
+            withTiming(0, {duration: 2000}, () => {
                 logoValue.value = withSequence( 
-                    withTiming(50, {duration: 3500}),
-                    withTiming(0, {duration: 3500}, () => {
+                    withTiming(50, {duration: 2000}),
+                    withTiming(0, {duration: 2000}, () => {
                         'workelt'
                         runOnJS(startApp)();
                     })

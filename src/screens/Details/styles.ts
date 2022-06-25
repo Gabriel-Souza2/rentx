@@ -4,6 +4,8 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
     flex: 1;
+    background-color: ${({ theme }) => theme.colors.background_secondary};
+
 `;
 
 export const Header = styled.View``;
@@ -77,7 +79,7 @@ export const Description = styled.Text`
 export const Footer = styled.View`
     width: 100%;
     height: 111px;
-    background-color: ${({ theme }) => theme.colors.background_primary};
+    background-color: ${({ theme }) => theme.colors.background_secondary};
     justify-content: center;
     align-items: center;
     padding: 0 24px;

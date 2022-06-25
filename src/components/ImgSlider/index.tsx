@@ -32,7 +32,7 @@ export function ImgSlider({ urls }: ImgSliderProps) {
             <ImgIndexes>
             {
                 urls.map((_, index) => (
-                    <ImgIndex active={index === imageIndex} />
+                    <ImgIndex key={index} active={index === imageIndex} />
                 )) 
             }
             </ImgIndexes>

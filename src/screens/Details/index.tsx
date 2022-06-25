@@ -1,6 +1,7 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import Animated, { Extrapolate, interpolate, useAnimatedScrollHandler, useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
 
 
 import { BackButton } from '../../components/BackButton';
@@ -40,6 +41,20 @@ export function Details() {
 
     const { params: {car} } = useRoute<DetailsRouteParams>();
 
+    const scrollY = useSharedValue(0);
+
+    const scrollHandler = useAnimatedScrollHandler(event => {
+        scrollY.value = event.contentOffset.y;
+    });
+
+    const headerAnimation = useAnimatedStyle(() => {
+        return {
+            height: interpolate(scrollY.value, [0, 200], [200, 70], Extrapolate.CLAMP),
+            opacity: interpolate(scrollY.value, [0, 100], [1, 0], Extrapolate.CLAMP)
+
+        }
+    })
+
     function handleHome() {
         navigator.goBack();
     }
@@ -58,10 +73,16 @@ export function Details() {
             <Header>
                 <BackButton onPress={handleHome} />
             </Header>
-            <ImgSliderContainer>
-                <ImgSlider urls={car.photos} />
-            </ImgSliderContainer>
-            <Content>
+            <Animated.View style={[headerAnimation]}>
+                <ImgSliderContainer>
+                    <ImgSlider urls={car.photos} />
+                </ImgSliderContainer>
+            </Animated.View>
+            <Animated.ScrollView 
+                showsVerticalScrollIndicator={false}
+                onScroll={scrollHandler}
+                scrollEventThrottle={16}
+            >
                 <Information>
                     <Type>
                         <Manufacturer>
@@ -97,9 +118,15 @@ export function Details() {
                 <DescriptionWrapper>
                     <Description>
                         { car.about }
+                        { car.about }
+                        { car.about }
+                        { car.about }
+
                     </Description>
                 </DescriptionWrapper>
-            </Content>
+            </Animated.ScrollView 
+            
+            >
             <Footer>
                 <MainButton 
                     text="Escolher período do aluguel" 
