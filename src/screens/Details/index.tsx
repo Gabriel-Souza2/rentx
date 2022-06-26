@@ -82,6 +82,9 @@ export function Details() {
                 showsVerticalScrollIndicator={false}
                 onScroll={scrollHandler}
                 scrollEventThrottle={16}
+                style={{
+                    marginTop: 15
+                }}
             >
                 <Information>
                     <Type>
@@ -118,10 +121,6 @@ export function Details() {
                 <DescriptionWrapper>
                     <Description>
                         { car.about }
-                        { car.about }
-                        { car.about }
-                        { car.about }
-
                     </Description>
                 </DescriptionWrapper>
             </Animated.ScrollView 
