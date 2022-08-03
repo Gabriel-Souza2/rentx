@@ -13,4 +13,4 @@ Projeto da rocketseat, desenvolvido no chapter III da trilha de react native do 
 - Bare Workflow
 
 ## Projeto no Figma
-<a href="https://www.figma.com/file/4ojyGi2mGuQaGK0sUHMAqB/RentX-Ignite">Layout do projeto</a>
+<a href="https://www.figma.com/file/Pb2MtPFmb8oM9O2NeeRgOK/Ignite-Feed-Community?fuid=1070490723086232232">Layout do projeto</a>
